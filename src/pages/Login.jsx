@@ -23,7 +23,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
       <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg w-96 shadow">
-        <h1 className="text-2xl font-bold mb-6 text-center">Fia-2</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">Bienvenidos a Fia-2</h1>
 
         {error && <p className="text-red-500 mb-3">{error}</p>}
 
@@ -45,7 +45,7 @@ export default function Login() {
         </button>
 
         <p className="text-sm mt-4 text-center">
-          ¿No tenés cuenta? <Link className="text-blue-600" to="/register">Registrarse</Link>
+           ¿No tenés cuenta? Contactame 3804201334 {/* <Link className="text-blue-600" to="/register">Registrarse</Link> */}
         </p>
       </form>
     </div>
