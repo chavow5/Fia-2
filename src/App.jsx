@@ -5,6 +5,8 @@ import Register from "./pages/Register"
 import Clientes from "./pages/Clientes"
 import ClienteDetalle from "./pages/ClienteDetalle"
 import EditarCliente from "./pages/EditarCliente"
+import NuevaDeuda from "./pages/NuevaDeuda"
+
 
 
 function PrivateRoute({ children }) {
@@ -20,6 +22,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/clientes/:id/editar" element={<EditarCliente />} />
+          <Route path="/clientes/:id/nueva-deuda" element={<NuevaDeuda />} />
 
 
           <Route
@@ -32,7 +35,7 @@ export default function App() {
           />
 
           <Route
-            path="/cliente/:id"
+            path="/clientes/:id"
             element={
               <PrivateRoute>
                 <ClienteDetalle />

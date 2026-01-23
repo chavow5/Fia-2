@@ -58,7 +58,7 @@ export default function ClienteDetalle() {
       >
         ← Volver
       </button>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-start mb-6">
         <div>
           <h1 className="text-2xl font-bold">{cliente.nombre}</h1>
           <p className="text-gray-500">DNI: {cliente.dni}</p>
@@ -66,56 +66,69 @@ export default function ClienteDetalle() {
         </div>
 
 
-        <div className="flex gap-2">
-          <button
-            onClick={() => navigate(`/clientes/${id}/nueva-deuda`)}
-            className="bg-green-500 text-white px-4 py-2 rounded"
-          >
-            + Deuda
-          </button>
+        <div className="flex flex-col gap-2">
 
+          <button
+            onClick={eliminarCliente}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-semibold border-2 border-red-700 shadow-md"
+          >
+            ⚠️ Eliminar Cliente
+          </button>
+          
           <button
             onClick={() => navigate(`/clientes/${id}/editar`)}
             className="bg-blue-500 text-white px-4 py-2 rounded"
           >
-            Editar
+            Editar Cliente
           </button>
 
+
           <button
-            onClick={eliminarCliente}
-            className="bg-red-500 text-white px-4 py-2 rounded"
+            onClick={() => navigate(`/clientes/${id}/nueva-deuda`)}
+            className="bg-green-500 text-white px-4 py-2 rounded"
           >
-            Eliminar
+            Nueva Deuda
           </button>
+
         </div>
 
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow mb-6">
-        <p className="text-sm text-gray-500">Deuda Total</p>
-        <p className="text-3xl font-bold text-red-500">${total}</p>
+        <p className="text-sm text-gray-500 font-bold">Deuda Total</p>
+        <p className="text-3xl font-bold text-red-600">
+          ${total.toLocaleString()}
+        </p>
+
       </div>
 
-      <div className="bg-white rounded-xl shadow overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-gray-100 text-left">
+      <div className="bg-white rounded-xl shadow overflow-hidden border">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-100">
             <tr>
-              <th className="p-3">Fecha</th>
-              <th className="p-3">Descripción</th>
-              <th className="p-3">Monto</th>
-              <th className="p-3">Acciones</th>
+              <th className="p-3 text-left">Fecha</th>
+              <th className="p-3 text-left">Descripción</th>
+              <th className="p-3 text-right">Monto</th>
+              <th className="p-3 text-right">Acciones</th>
             </tr>
           </thead>
 
+
           <tbody>
+            {deudas.length === 0 && (
+              <tr>
+                <td colSpan="4" className="p-6 text-center text-gray-400">
+                  Este cliente no tiene deudas
+                </td>
+              </tr>
+            )}
+
             {deudas.map((d) => (
-              <tr key={d.id} className="border-t">
+              <tr key={d.id} className="border-t hover:bg-gray-50">
                 <td className="p-3">{d.fecha}</td>
                 <td className="p-3">{d.descripcion}</td>
-                <td className="p-3 text-red-500 font-semibold">
-                  ${d.monto}
-                </td>
-                <td className="p-3 flex gap-2">
+                <td className="p-3 text-right text-red-600 font-bold">${d.monto.toLocaleString()}</td>
+                <td className="p-3 flex flex-col gap-2 items-end">
                   <button
                     onClick={() => navigate(`/deudas/${d.id}/editar`)}
                     className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
@@ -133,6 +146,7 @@ export default function ClienteDetalle() {
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
 
