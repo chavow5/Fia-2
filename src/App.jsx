@@ -6,6 +6,8 @@ import Clientes from "./pages/Clientes"
 import ClienteDetalle from "./pages/ClienteDetalle"
 import EditarCliente from "./pages/EditarCliente"
 import NuevaDeuda from "./pages/NuevaDeuda"
+import EditarDeuda from "./pages/EditarDeuda"
+import RegistrarPago from "./pages/RegistrarPago"
 
 
 
@@ -24,12 +26,29 @@ export default function App() {
           <Route path="/clientes/:id/editar" element={<EditarCliente />} />
           <Route path="/clientes/:id/nueva-deuda" element={<NuevaDeuda />} />
 
+          <Route
+            path="/deudas/:id/editar"
+            element={
+              <PrivateRoute>
+                <EditarDeuda />
+              </PrivateRoute>
+            }
+          />
 
           <Route
             path="/"
             element={
               <PrivateRoute>
                 <Clientes />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/deudas/:id/pago"
+            element={
+              <PrivateRoute>
+                <RegistrarPago />
               </PrivateRoute>
             }
           />

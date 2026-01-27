@@ -29,7 +29,7 @@ export default function Clientes() {
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <button
-        onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
         className="mb-4 text-blue-600 hover:underline"
       >
         ← Volver
@@ -48,7 +48,7 @@ export default function Clientes() {
           return (
             <div
               key={c.id}
-              onClick={() => navigate(`/cliente/${c.id}`)}
+              onClick={() => navigate(`/clientes/${c.id}`)}
               className="bg-white p-6 rounded-xl shadow cursor-pointer hover:shadow-lg transition"
             >
               <div className="flex items-center gap-3 mb-4">

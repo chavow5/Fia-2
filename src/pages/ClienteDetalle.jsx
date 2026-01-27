@@ -50,10 +50,26 @@ export default function ClienteDetalle() {
   }
 
 
+  const formatFecha = (fecha) => {
+    if (!fecha) return ""
+    const dt = new Date(fecha)
+    return dt
+      .toLocaleString("es-AR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+      .replace(/,\s*/g, " ")
+  }
+
+
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate('/')}
         className="mb-4 text-blue-600 hover:underline"
       >
         ← Volver
@@ -62,7 +78,14 @@ export default function ClienteDetalle() {
         <div>
           <h1 className="text-2xl font-bold">{cliente.nombre}</h1>
           <p className="text-gray-500">DNI: {cliente.dni}</p>
-          <p className="text-gray-500">📞 {cliente.telefono || "Sin teléfono"}</p>
+          <a
+            href={cliente.telefono ? `https://wa.me/${cliente.telefono.replace(/\D/g, '')}` : '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-green-500 hover:underline cursor-pointer inline-block"
+          >
+            📞 {cliente.telefono || "Sin teléfono"}
+          </a>
         </div>
 
 
@@ -74,10 +97,10 @@ export default function ClienteDetalle() {
           >
             ⚠️ Eliminar Cliente
           </button>
-          
+
           <button
             onClick={() => navigate(`/clientes/${id}/editar`)}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded font-semibold"
           >
             Editar Cliente
           </button>
@@ -85,7 +108,7 @@ export default function ClienteDetalle() {
 
           <button
             onClick={() => navigate(`/clientes/${id}/nueva-deuda`)}
-            className="bg-green-500 text-white px-4 py-2 rounded"
+            className="bg-green-400 text-white px-4 py-2 rounded font-semibold"
           >
             Nueva Deuda
           </button>
@@ -99,6 +122,9 @@ export default function ClienteDetalle() {
         <p className="text-3xl font-bold text-red-600">
           ${total.toLocaleString()}
         </p>
+      </div>
+
+      <div className="flex flex-col gap-5 mb-4 md:flex-row md:justify-between md:items-center">
 
       </div>
 
@@ -125,7 +151,7 @@ export default function ClienteDetalle() {
 
             {deudas.map((d) => (
               <tr key={d.id} className="border-t hover:bg-gray-50">
-                <td className="p-3">{d.fecha}</td>
+                <td className="p-3">{formatFecha(d.fecha)}</td>
                 <td className="p-3">{d.descripcion}</td>
                 <td className="p-3 text-right text-red-600 font-bold">${d.monto.toLocaleString()}</td>
                 <td className="p-3 flex flex-col gap-2 items-end">
@@ -135,7 +161,12 @@ export default function ClienteDetalle() {
                   >
                     ✏
                   </button>
-
+                  <button
+                    onClick={() => navigate(`/deudas/${d.id}/pago`)}
+                    className="bg-green-500 text-white px-2 py-1 rounded text-sm"
+                  >
+                    💵
+                  </button>
                   <button
                     onClick={() => borrarDeuda(d.id)}
                     className="bg-red-500 text-white px-2 py-1 rounded text-sm"

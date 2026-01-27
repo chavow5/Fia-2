@@ -15,14 +15,36 @@ export default function NuevaDeuda() {
   const guardar = async (e) => {
     e.preventDefault()
 
-    if (!descripcion || !monto) return alert("Completa todos los campos")
+    if (!descripcion || !monto) {
+      alert("Completa todos los campos")
+      return
+    }
 
-    await supabase.from("deudas").insert({
-      cliente_id: id,
-      descripcion,
-      monto: Number(monto),
-      fecha
-    })
+    // 🔥 obtener usuario logueado
+    const {
+      data: { user },
+      error: userError
+    } = await supabase.auth.getUser()
+
+    if (userError || !user) {
+      alert("No hay usuario logueado")
+      return
+    }
+
+    const { error } = await supabase.from("deudas").insert([
+      {
+        cliente_id: id,
+        user_id: user.id,   // 🔥 ESTO ERA LO QUE FALTABA
+        descripcion,
+        monto: parseFloat(monto),
+        fecha
+      }
+    ])
+
+    if (error) {
+      alert(error.message)
+      return
+    }
 
     navigate(`/clientes/${id}`)
   }
@@ -35,7 +57,7 @@ export default function NuevaDeuda() {
       >
         <button
           type="button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           className="mb-4 text-blue-600 hover:underline"
         >
           ← Volver

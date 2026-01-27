@@ -47,7 +47,7 @@ export default function EditarCliente() {
                 className="bg-white p-6 rounded-xl shadow w-full max-w-md"
             >
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate('/')}
                     className="mb-4 text-blue-600 hover:underline"
                 >
                     ← Volver

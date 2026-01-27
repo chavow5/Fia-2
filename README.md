@@ -1,16 +1,56 @@
-# React + Vite
+# Gestor de Deudas - Fia 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para gestionar clientes y deudas. Creada para llevar un control organizado de quien le debe a quien.
 
-Currently, two official plugins are available:
+## 📦 Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## 🚀 Funcionalidades Actuales
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+```markdown
+- ✅ Autenticación de usuarios (Login/Registro)
+- ✅ Listado de clientes
+- ✅ Ver detalles de cliente
+- ✅ Crear nuevo cliente
+- ✅ Editar datos del cliente
+- ✅ Registrar deudas por cliente
+- ✅ Ver historial de deudas
+- ✅ Editar deudas existentes
+- ✅ Eliminar deudas y clientes
+- ✅ Enlace directo a WhatsApp del cliente
+- ✅ Cálculo automático de deuda total
 
-## Expanding the ESLint configuration
+## 📝 Cosas a Mejorar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [ ] Agregar búsqueda de clientes
+- [ ] Filtrado de deudas por período
+- [ ] Reportes de deudas impagas
+- [ ] Exportar datos a CSV/PDF
+- [ ] Panel de estadísticas
+- [ ] Validación mejorada en formularios
+- [ ] Confirmación de pago de deudas
+- [ ] Historial de cambios en deudas
+- [ ] Notas adicionales por cliente
+- [ ] Sistema de recordatorios de deudas
+- [ ] Mejoras en diseño responsivo mobile
+- [ ] Agregar icono y branding propio
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── pages/          # Componentes de páginas
+├── context/        # Context API (Auth)
+├── lib/           # Configuración de servicios
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## 👤 Autor
+
+Hecho con ❤️ durante Full Stack La Rioja
