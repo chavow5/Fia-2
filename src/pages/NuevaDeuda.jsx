@@ -8,9 +8,10 @@ export default function NuevaDeuda() {
 
   const [descripcion, setDescripcion] = useState("")
   const [monto, setMonto] = useState("")
-  const [fecha, setFecha] = useState(
-    new Date().toISOString().split("T")[0]
-  )
+  // const [fecha, setFecha] = useState(
+  //   new Date().toISOString().split("T")[0]
+  // )
+
 
   const guardar = async (e) => {
     e.preventDefault()
@@ -34,10 +35,10 @@ export default function NuevaDeuda() {
     const { error } = await supabase.from("deudas").insert([
       {
         cliente_id: id,
-        user_id: user.id,   // 🔥 ESTO ERA LO QUE FALTABA
+        user_id: user.id,
         descripcion,
         monto: parseFloat(monto),
-        fecha
+        fecha: new Date().toISOString() // fecha + hora de hoy
       }
     ])
 
@@ -80,12 +81,12 @@ export default function NuevaDeuda() {
           onChange={(e) => setMonto(e.target.value)}
         />
 
-        <input
+        {/* <input
           type="date"
           className="w-full p-2 border rounded mb-4"
           value={fecha}
           onChange={(e) => setFecha(e.target.value)}
-        />
+        /> */}
 
         <button className="w-full bg-green-500 text-white py-2 rounded">
           Guardar deuda

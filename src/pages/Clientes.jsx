@@ -29,16 +29,20 @@ export default function Clientes() {
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <button
-          onClick={() => navigate('/')}
+        onClick={() => navigate('/')}
         className="mb-4 text-blue-600 hover:underline"
       >
         ← Volver
       </button>
       <div className="flex justify-between mb-8">
         <h1 className="text-2xl font-bold">Fia-2</h1>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded">
-          Nuevo Cliente
+        <button
+          onClick={() => navigate("/clientes/nuevo")}
+          className="bg-green-500 text-white px-4 py-2 rounded font-semibold mb-4"
+        >
+          ➕ Nuevo Cliente
         </button>
+
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

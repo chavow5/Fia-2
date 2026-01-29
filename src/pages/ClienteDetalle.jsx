@@ -51,18 +51,19 @@ export default function ClienteDetalle() {
 
 
   const formatFecha = (fecha) => {
-    if (!fecha) return ""
+    if (!fecha) return { fecha: "", hora: "" }
     const dt = new Date(fecha)
-    return dt
-      .toLocaleString("es-AR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      })
-      .replace(/,\s*/g, " ")
+    const fechaFormato = dt.toLocaleString("es-AR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+    const horaFormato = dt.toLocaleString("es-AR", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })
+    return { fecha: fechaFormato, hora: horaFormato }
   }
 
 
@@ -128,14 +129,14 @@ export default function ClienteDetalle() {
 
       </div>
 
-      <div className="bg-white rounded-xl shadow overflow-hidden border">
-        <table className="w-full text-sm">
+      <div className="bg-white rounded-xl shadow overflow-x-auto border">
+        <table className="w-full text-sm md:text-base">
           <thead className="bg-gray-100">
             <tr>
-              <th className="p-3 text-left">Fecha</th>
-              <th className="p-3 text-left">Descripción</th>
-              <th className="p-3 text-right">Monto</th>
-              <th className="p-3 text-right">Acciones</th>
+              <th className="p-2 md:p-3 text-left">Fecha</th>
+              <th className="p-2 md:p-3 text-left">Descripción</th>
+              <th className="p-2 md:p-3 text-right">Monto</th>
+              <th className="p-2 md:p-3 text-center">Acciones</th>
             </tr>
           </thead>
 
@@ -151,27 +152,36 @@ export default function ClienteDetalle() {
 
             {deudas.map((d) => (
               <tr key={d.id} className="border-t hover:bg-gray-50">
-                <td className="p-3">{formatFecha(d.fecha)}</td>
-                <td className="p-3">{d.descripcion}</td>
-                <td className="p-3 text-right text-red-600 font-bold">${d.monto.toLocaleString()}</td>
-                <td className="p-3 flex flex-col gap-2 items-end">
+                <td className="p-2 md:p-3 text-xs md:text-sm">
+                  <div className="font-semibold">{formatFecha(d.fecha).fecha}</div>
+                  <div className="text-gray-500 text-xs">{formatFecha(d.fecha).hora}</div>
+                </td>
+                <td className="p-2 md:p-3 text-xs md:text-sm max-w-[160px] md:max-w-md whitespace-normal break-words">
+                  {d.descripcion}
+                </td>
+
+                <td className="p-2 md:p-3 text-right text-red-600 font-bold text-xs md:text-sm whitespace-nowrap">${d.monto.toLocaleString()}</td>
+                <td className="p-2 md:p-3 flex flex-row gap-1 md:gap-2 justify-center items-center flex-wrap">
                   <button
                     onClick={() => navigate(`/deudas/${d.id}/editar`)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 md:px-3 py-1 rounded text-xs md:text-sm flex items-center gap-1"
+                    title="Editar"
                   >
-                    ✏
+                    ✏ <span className="hidden md:inline">Editar</span>
                   </button>
                   <button
                     onClick={() => navigate(`/deudas/${d.id}/pago`)}
-                    className="bg-green-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-green-500 hover:bg-green-600 text-white px-2 md:px-3 py-1 rounded text-xs md:text-sm flex items-center gap-1"
+                    title="Registrar pago"
                   >
-                    💵
+                    💵 <span className="hidden md:inline">Pagar</span>
                   </button>
                   <button
                     onClick={() => borrarDeuda(d.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-red-500 hover:bg-red-600 text-white px-2 md:px-3 py-1 rounded text-xs md:text-sm flex items-center gap-1"
+                    title="Eliminar"
                   >
-                    🗑
+                    🗑 <span className="hidden md:inline">Borrar</span>
                   </button>
                 </td>
               </tr>
