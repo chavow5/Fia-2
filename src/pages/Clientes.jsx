@@ -3,10 +3,13 @@ import { supabase } from "../lib/supabase"
 import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
+
 export default function Clientes() {
   const { user } = useAuth()
   const [clientes, setClientes] = useState([])
   const navigate = useNavigate()
+  const [busqueda, setBusqueda] = useState("")
+
 
   useEffect(() => {
     loadClientes()
@@ -26,6 +29,12 @@ export default function Clientes() {
   const totalDeuda = (deudas) =>
     deudas.reduce((sum, d) => sum + d.monto, 0)
 
+  const clientesFiltrados = clientes.filter(c =>
+    c.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+    (c.dni && c.dni.toString().includes(busqueda))
+  )
+
+
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <button
@@ -44,9 +53,23 @@ export default function Clientes() {
         </button>
 
       </div>
+      <input
+        type="text"
+        placeholder="Buscar por Nombre o DNI..."
+        className="w-full p-2 border rounded mb-6"
+        value={busqueda}
+        onChange={(e) => setBusqueda(e.target.value)}
+      />
+      {clientesFiltrados.length === 0 && busqueda && (
+        <p className="text-center text-gray-500 mb-6">
+          Nombre o DNI no encontrado
+        </p>
+      )}
+
+
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {clientes.map((c) => {
+        {clientesFiltrados.map((c) => {
           const deuda = totalDeuda(c.deudas || [])
 
           return (
