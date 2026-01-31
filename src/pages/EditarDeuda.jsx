@@ -8,7 +8,6 @@ export default function EditarDeuda() {
 
   const [descripcion, setDescripcion] = useState("")
   const [monto, setMonto] = useState("")
-  const [fecha, setFecha] = useState("")
   const [clienteId, setClienteId] = useState(null)
 
   useEffect(() => {
@@ -29,7 +28,6 @@ export default function EditarDeuda() {
 
     setDescripcion(data.descripcion)
     setMonto(data.monto)
-    setFecha(data.fecha)
     setClienteId(data.cliente_id)
   }
 
@@ -45,8 +43,7 @@ export default function EditarDeuda() {
       .from("deudas")
       .update({
         descripcion,
-        monto: parseFloat(monto),
-        fecha
+        monto: parseFloat(monto)
       })
       .eq("id", id)
 
@@ -66,7 +63,7 @@ export default function EditarDeuda() {
       >
         <button
           type="button"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="mb-4 text-blue-600 hover:underline"
         >
           ← Volver
@@ -83,17 +80,10 @@ export default function EditarDeuda() {
 
         <input
           type="number"
-          className="w-full p-2 border rounded mb-3"
+          className="w-full p-2 border rounded mb-4"
           placeholder="Monto"
           value={monto}
           onChange={(e) => setMonto(e.target.value)}
-        />
-
-        <input
-          type="date"
-          className="w-full p-2 border rounded mb-4"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
         />
 
         <button className="w-full bg-blue-500 text-white py-2 rounded">

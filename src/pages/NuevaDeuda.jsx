@@ -11,6 +11,8 @@ export default function NuevaDeuda() {
   // const [fecha, setFecha] = useState(
   //   new Date().toISOString().split("T")[0]
   // )
+  const ahora = new Date()
+  const fechaISO = ahora.toISOString() // UTC real
 
 
   const guardar = async (e) => {
