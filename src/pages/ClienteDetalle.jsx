@@ -35,7 +35,7 @@ export default function ClienteDetalle() {
     await supabase.from("deudas").delete().eq("cliente_id", id)
     await supabase.from("clientes").delete().eq("id", id)
 
-    navigate("/dashboard")
+    navigate("/")
   }
 
   const total = deudas.reduce((s, d) => s + d.monto, 0)
