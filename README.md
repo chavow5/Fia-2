@@ -54,3 +54,38 @@ src/
 ## 👤 Autor
 
 Hecho con ❤️ durante Full Stack La Rioja
+
+```
+Fia-2
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.js
+├─ README.md
+├─ SQL
+├─ src
+│  ├─ App.jsx
+│  ├─ components
+│  │  ├─ Footer.jsx
+│  │  └─ Header.jsx
+│  ├─ context
+│  │  └─ AuthContext.jsx
+│  ├─ index.css
+│  ├─ lib
+│  │  └─ supabase.js
+│  ├─ main.jsx
+│  └─ pages
+│     ├─ ClienteDetalle.jsx
+│     ├─ Clientes.jsx
+│     ├─ EditarCliente.jsx
+│     ├─ EditarDeuda.jsx
+│     ├─ Login.jsx
+│     ├─ NuevaDeuda.jsx
+│     ├─ NuevoCliente.jsx
+│     ├─ Register.jsx
+│     └─ RegistrarPago.jsx
+├─ tailwind.config.js
+└─ vite.config.js
+
+```

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function Clientes() {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const [clientes, setClientes] = useState([])
   const navigate = useNavigate()
   const [busqueda, setBusqueda] = useState("")
@@ -14,6 +14,13 @@ export default function Clientes() {
   useEffect(() => {
     loadClientes()
   }, [])
+
+  const handleLogout = async () => {
+    if (logout) {
+      await logout()
+    }
+    navigate('/login')
+  }
 
   const loadClientes = async () => {
     const { data } = await supabase
@@ -44,13 +51,28 @@ export default function Clientes() {
         ← Volver
       </button>
       <div className="flex justify-between mb-8">
-        <h1 className="text-2xl font-bold">Fia-2</h1>
-        <button
-          onClick={() => navigate("/clientes/nuevo")}
-          className="bg-green-500 text-white px-4 py-2 rounded font-semibold mb-4"
-        >
-          ➕ Nuevo Cliente
-        </button>
+        <h1 className="text-2xl font-bold text-slate-800">
+          👋 Bienvenido,{" "}
+          <span className="text-blue-600">
+            {user?.user_metadata?.nombre || user?.email}
+          </span>
+        </h1>
+
+        <div className="flex gap-3">
+          <button
+            onClick={() => navigate("/clientes/nuevo")}
+            className="bg-green-500 text-white px-4 py-2 rounded font-semibold mb-4"
+          >
+            ➕ Nuevo Cliente
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 text-white px-4 py-2 rounded font-semibold mb-4"
+          >
+            Cerrar Sesión
+          </button>
+        </div>
 
       </div>
       <input
