@@ -58,21 +58,29 @@ export default function Clientes() {
           </span>
         </h1>
 
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+          {/* Nuevo cliente */}
           <button
             onClick={() => navigate("/clientes/nuevo")}
-            className="bg-green-500 text-white px-4 py-2 rounded font-semibold mb-4"
+            className="bg-green-500 text-white px-2 py-1.5 rounded text-xs sm:text-sm font-semibold w-full sm:w-auto flex items-center justify-center gap-1"
+            title="Nuevo Cliente"
           >
-            ➕ Nuevo Cliente
+            <span className="text-base">➕</span>
+            <span className="hidden sm:inline">Nuevo</span>
           </button>
 
+          {/* Cerrar sesión */}
           <button
             onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded font-semibold mb-4"
+            className="bg-red-500 text-white px-2 py-1.5 rounded text-xs sm:text-sm font-semibold w-full sm:w-auto flex items-center justify-center gap-1"
+            title="Cerrar Sesión"
           >
-            Cerrar Sesión
+            <span className="text-base">🚪</span>
+            <span className="hidden sm:inline">Salir</span>
           </button>
         </div>
+
+
 
       </div>
       <input
