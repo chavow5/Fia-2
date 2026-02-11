@@ -1,15 +1,22 @@
-# Gestor de Deudas - Fia 2
+# Sistema de Deudas para Kioscos - Fia 2
 
 Aplicación web para gestionar clientes y deudas. Creada para llevar un control organizado de quien le debe a quien.
+Especialmente para negocios de barrios para ayudar a su gente de confianza 
 
-## 📦 Instalación
+## 📦 Con sistema de Login
 
-```bash
-npm install
-npm run dev
+``` Login
+Usuario:
+Contraseña:
+
 ```
 
-## 🚀 Funcionalidades Actuales
+## 🚀 Screenshots Fia-2
+
+
+<img width="837" height="935" alt="image" src="https://github.com/user-attachments/assets/efadf414-d314-49df-961a-98e4c5d01923" />
+<img width="849" height="937" alt="image" src="https://github.com/user-attachments/assets/c9688806-031d-4ef3-aa3f-c921e4407dfe" />
+
 
 ```markdown
 - ✅ Autenticación de usuarios (Login/Registro)
@@ -24,20 +31,6 @@ npm run dev
 - ✅ Enlace directo a WhatsApp del cliente
 - ✅ Cálculo automático de deuda total
 
-## 📝 Cosas a Mejorar
-
-- [ ] Agregar búsqueda de clientes
-- [ ] Filtrado de deudas por período
-- [ ] Reportes de deudas impagas
-- [ ] Exportar datos a CSV/PDF
-- [ ] Panel de estadísticas
-- [ ] Validación mejorada en formularios
-- [ ] Confirmación de pago de deudas
-- [ ] Historial de cambios en deudas
-- [ ] Notas adicionales por cliente
-- [ ] Sistema de recordatorios de deudas
-- [ ] Mejoras en diseño responsivo mobile
-- [ ] Agregar icono y branding propio
 
 ## 📁 Estructura del Proyecto
 
@@ -51,41 +44,6 @@ src/
 └── index.css
 ```
 
-## 👤 Autor
+## 👤 David Ramirez
 
 Hecho con ❤️ durante Full Stack La Rioja
-
-```
-Fia-2
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.js
-├─ README.md
-├─ SQL
-├─ src
-│  ├─ App.jsx
-│  ├─ components
-│  │  ├─ Footer.jsx
-│  │  └─ Header.jsx
-│  ├─ context
-│  │  └─ AuthContext.jsx
-│  ├─ index.css
-│  ├─ lib
-│  │  └─ supabase.js
-│  ├─ main.jsx
-│  └─ pages
-│     ├─ ClienteDetalle.jsx
-│     ├─ Clientes.jsx
-│     ├─ EditarCliente.jsx
-│     ├─ EditarDeuda.jsx
-│     ├─ Login.jsx
-│     ├─ NuevaDeuda.jsx
-│     ├─ NuevoCliente.jsx
-│     ├─ Register.jsx
-│     └─ RegistrarPago.jsx
-├─ tailwind.config.js
-└─ vite.config.js
-
-```
