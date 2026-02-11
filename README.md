@@ -30,19 +30,9 @@ Contraseña:
 - ✅ Eliminar deudas y clientes
 - ✅ Enlace directo a WhatsApp del cliente
 - ✅ Cálculo automático de deuda total
-
-
-## 📁 Estructura del Proyecto
-
 ```
-src/
-├── pages/          # Componentes de páginas
-├── context/        # Context API (Auth)
-├── lib/           # Configuración de servicios
-├── App.jsx
-├── main.jsx
-└── index.css
-```
+
+
 
 ## 👤 David Ramirez
 
