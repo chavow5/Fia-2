@@ -1,0 +1,24 @@
+publicacion para Facebook
+
+“Fiar no es el problema. El problema es no llevar el control.”
+
+Si tenés un kiosco y fiás, seguro alguna vez se te mezclaron las cuentas:
+quién debe, cuánto o si ya pagó.
+
+Por eso creé FIA-2, un sistema simple para anotar clientes y deudas, pensado para comercios de La Rioja.
+
+👉 Podés probarlo gratis con usuario y contraseña:
+https://fia-2.vercel.app
+
+Con FIA-2 podés:
+✔ Registrar clientes
+✔ Anotar deudas
+✔ Ver totales
+✔ Registrar pagos
+✔ Buscar por nombre o DNI
+
+Soy David Ramírez, soy Programador y vivo en La Rioja.
+Lo hice para kioscos y negocios que necesitan algo simple y claro.
+
+WhatsApp: 3804201334
+#FIA2 #Kiosco #ControlDeDeudas #LaRioja 
